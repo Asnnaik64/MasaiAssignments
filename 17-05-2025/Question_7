@@ -1,0 +1,37 @@
+// Q: 17
+// L2: Memoization using Closures
+// Description:
+// Write a function memoize(fn) that takes a function fn as input and returns a memoized version of that function using closures. The memoized function should store results of previous calls to avoid recalculating them for the same input.
+
+// Requirements:
+// The memoize() function should return a function that:
+
+// Caches the result of fn based on its arguments.
+// If the same arguments are passed again, return the cached result instead of recalculating.
+// Use closures to store the cache.
+
+// Bonus:
+// Make sure the cache has a maximum size (e.g., 5) and removes the oldest entry when it exceeds the limit.
+
+
+function memoize(fn) {
+    const cache = new Map(); /
+    const MAX_SIZE = 5;
+
+    return function(...args) {
+        const key = JSON.stringify(args);
+
+        if (cache.has(key)) {
+            return cache.get(key); 
+        }
+
+        const result = fn(...args); 
+        cache.set(key, result);     
+        if (cache.size > MAX_SIZE) {
+            const oldestKey = cache.keys().next().value;
+            cache.delete(oldestKey);
+        }
+
+        return result;
+    };
+}
