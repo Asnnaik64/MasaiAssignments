@@ -1,0 +1,28 @@
+// Q: 15
+// L0: Simple Closure Example
+// Description:
+// Write a function createCounter() that creates a counter. The counter should start at 0 and increment by 1 each time it's called. Use a closure to maintain the count value across multiple calls.
+
+// Requirements:
+// Define a function createCounter() that returns an inner function.
+// Each time the inner function is called, it should increment and return the counter value.
+// The counter value should persist between calls using closures.
+// Bonus:
+// Add a reset() function inside the closure to reset the counter back to 0.
+
+
+
+function createCounter() {
+    let count = 0; 
+
+    function counter() {
+        count = count + 1;
+        return count;
+    }
+
+    counter.reset = function() {
+        count = 0;
+    };
+
+    return counter;
+}
