@@ -1,1 +1,51 @@
 
+// Q: 16
+// L1: Private Data with Closures
+// Description:
+// Create a function bankAccount() that simulates a simple bank account. The account should have a balance, and you should be able to deposit, withdraw, and check the balance.
+
+// Requirements:
+// Use closures to maintain the private balance value.
+
+// The bankAccount function should return an object with methods:
+
+// deposit(amount) to increase the balance.
+// withdraw(amount) to decrease the balance.
+// getBalance() to return the current balance.
+// Bonus:
+// Ensure that the withdraw() method doesn't allow withdrawals that exceed the current balance.
+// Add a reset() method that resets the account to an initial balance.
+
+
+function bankAccount(initialBalance) {
+    let balance = initialBalance;
+
+    return {
+        deposit: function(amount) {
+            if (amount > 0) {
+                balance = balance + amount;
+                return balance;
+            } else {
+                return "Deposit must be positive.";
+            }
+        },
+
+        withdraw: function(amount) {
+            if (amount <= balance) {
+                balance = balance - amount;
+                return balance;
+            } else {
+                return "Insufficient balance.";
+            }
+        },
+
+        getBalance: function() {
+            return balance;
+        },
+
+        reset: function() {
+            balance = initialBalance;
+            return balance;
+        }
+    };
+}
