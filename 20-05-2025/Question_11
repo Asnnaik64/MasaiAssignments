@@ -1,0 +1,38 @@
+// Q: 11
+// Title:
+// L1 - this Inside a Method vs Regular Function
+
+// Problem Statement:
+// Create an object user with a property username and a method showUsername that logs this.username. Also, create a regular function outside the object that tries to log this.username. Use both to demonstrate the difference in this context between a method and a standalone function.
+
+// Example:
+// let user = {
+//   username: "john_doe",
+//   showUsername: function() {
+//     console.log("Method:", this.username);
+//   }
+// };
+
+// function displayUsername() {
+//   console.log("Function:", this.username);
+// }
+
+// user.showUsername();      // Output: Method: john_doe
+// displayUsername();        // Output: Function: undefined (or window.username i
+
+
+let user = {
+  username: "john_doe",
+  showUsername: function() {
+    console.log("Method:", this.username);
+  }
+};
+
+function displayUsername() {
+  console.log("Function:", this.username);
+}
+
+user.showUsername();     
+
+displayUsername();        
+
