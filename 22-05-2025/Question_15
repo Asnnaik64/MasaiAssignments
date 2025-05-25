@@ -1,0 +1,56 @@
+// Q: 15
+// Title
+// L1 - Chaining Promises for Sequential Tasks
+
+// Problem Statement
+// Simulate a workflow where:
+
+// Task A (startTask): Resolves after 1s with "Task A completed"
+// Task B (processTask): Takes Task A's output, resolves after 1.5s with "Task B processed: <Task A's output>"
+// Task C (finalizeTask): Takes Task B's output, resolves after 0.5s with "Final result: <Task B's output>"
+// Requirements:
+
+// Use promise chaining (.then())
+// Log each step's output
+// Handle errors if any task fails
+// Expected Output
+// "Task A completed"
+// (1 second delay)
+// "Task B processed: Task A completed"
+// (1.5 second delay)
+// "Final result: Task B processed: Task A completed"
+
+function startTask() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const result = "Task A completed";
+      console.log(result);
+      resolve(result);
+    }, 1000);
+  });
+}
+
+function processTask(previousResult) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const result = `Task B processed: ${previousResult}`;
+      console.log(result);
+      resolve(result);
+    }, 1500);
+  });
+}
+
+function finalizeTask(previousResult) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const result = `Final result: ${previousResult}`;
+      console.log(result);
+      resolve(result);
+    }, 500);
+  });
+}
+
+startTask()
+  .then(processTask)
+  .then(finalizeTask)
+  .catch(error => console.error("Error:", error));
