@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Semantic Webpage</title>
+</head>
+<body>
+
+    <header>
+        <h1>Welcome to My Awesome Blog</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Recent Articles</h2>
+
+            <article>
+                <h3>The Power of Semantic HTML</h3>
+                <p>Semantic HTML elements clearly define the purpose of the content they contain. This not only helps search engines understand your webpage better but also improves accessibility for users relying on assistive technologies.</p>
+                <p>Using tags like `<header>`, `<nav>`, `<section>`, `<article>`, and `<footer>` makes your code more readable and maintainable.</p>
+            </article>
+
+            <article>
+                <h3>Getting Started with Web Development</h3>
+                <p>Web development is an exciting field! To begin, focus on the core technologies: HTML for structure, CSS for styling, and JavaScript for interactivity. Consistent practice and building small projects are key to mastering these skills.</p>
+                <p>There are countless resources available online, from free tutorials to comprehensive courses, to help you on your journey.</p>
+            </article>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Awesome Blog. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
