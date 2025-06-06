@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Navigation</title>
+    <style>
+        nav {
+            display: flex;
+            background: #333;
+            padding: 1rem;
+            gap: 2rem;
+        }
+
+        .nav-section {
+            flex: 1;
+            padding: 0.5rem;
+            background: #444;
+        }
+
+        .products-section a {
+            color: #4CAF50;
+        }
+
+        .services-section a {
+            color: #2196F3;
+        }
+
+        .contact-section a {
+            color: #FF9800;
+        }
+
+        .nav-section > a {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        a {
+            display: block;
+            padding: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        a:active {
+            transform: translateY(0);
+            opacity: 0.8;
+        }
+
+        a[href^="https"] {
+            color: #FF5722 !important;
+            border-left: 2px solid #FF5722;
+            padding-left: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-section products-section">
+            <a href="#">Products</a>
+            <a href="/featured">Featured</a>
+            <a href="https://example.com/new">New Arrivals</a>
+            <div>
+                <a href="/sale">On Sale</a>
+            </div>
+        </div>
+
+        <div class="nav-section services-section">
+            <a href="#">Services</a>
+            <a href="/consulting">Consulting</a>
+            <a href="https://example.com/support">Support</a>
+            <div>
+                <a href="/training">Training</a>
+            </div>
+        </div>
+
+        <div class="nav-section contact-section">
+            <a href="#">Contact</a>
+            <a href="/locations">Locations</a>
+            <a href="https://example.com/chat">Live Chat</a>
+            <div>
+                <a href="/feedback">Feedback</a>
+            </div>
+        </div>
+    </nav>
+</body>
+</html>
