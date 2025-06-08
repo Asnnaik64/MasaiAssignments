@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Card Layout</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="grid-container">
+    <div class="card bg1">
+      <img src="https://picsum.photos/300/180?random=1" alt="Image 1" />
+      <h3>Card Title 1</h3>
+      <p>This is a description for card one.</p>
+    </div>
+    <div class="card bg2">
+      <img src="https://picsum.photos/300/180?random=2" alt="Image 2" />
+      <h3>Card Title 2</h3>
+      <p>This is a description for card two.</p>
+    </div>
+    <div class="card bg3">
+      <img src="https://picsum.photos/300/180?random=3" alt="Image 3" />
+      <h3>Card Title 3</h3>
+      <p>This is a description for card three.</p>
+    </div>
+    <div class="card bg4">
+      <img src="https://picsum.photos/300/180?random=4" alt="Image 4" />
+      <h3>Card Title 4</h3>
+      <p>This is a description for card four.</p>
+    </div>
+  </div>
+
+</body>
+</html>
