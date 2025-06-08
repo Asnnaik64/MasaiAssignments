@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Revamp Layout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="section home-revamp">
+            <h1>Revamp your home in style</h1>
+            <div class="category-group">
+                <div class="category">
+                    <div class="category-item">
+                        <img src="cushion.jpg" alt="Cushion covers">
+                        <p>Cushion covers, bedsheets & more</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="vases.jpg" alt="Decor items">
+                        <p>Figurines, vases & more</p>
+                    </div>
+                </div>
+                <div class="category">
+                    <div class="category-item">
+                        <img src="storage.jpg" alt="Home storage">
+                        <p>Home storage</p>
+                    </div>
+                    <div class="category-item">
+                        <img src="lighting.jpg" alt="Lighting">
+                        <p>Lighting solutions</p>
+                    </div>
+                </div>
+            </div>
+            <div class="explore">Explore all</div>
+        </div>
+
+        <div class="section headphones">
+            <h1>Starting ₹149 | Headphones</h1>
+            <div class="brands-container">
+                <div class="brand">
+                    <img src="boult.jpg" alt="BOULT Headphones" class="brand-img">
+                    <h2>BOULT</h2>
+                    <p>Starting ₹249 | Ioak</p>
+                    <p>Starting ₹349 | Ioak</p>
+                </div>
+                <div class="brand">
+                    <img src="noise.jpg" alt="noISE Headphones" class="brand-img">
+                    <h2>noISE</h2>
+                    <p>Starting ₹649 | Iokise</p>
+                    <div class="explore">See all offers</div>
+                </div>
+                <div class="brand">
+                    <img src="zebronics.jpg" alt="ZEBRONICS Headphones" class="brand-img">
+                    <h2>ZEBRONICS</h2>
+                    <p>Starting ₹149 | Zebronics</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
