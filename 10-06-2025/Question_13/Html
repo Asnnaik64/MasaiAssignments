@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive DOM Manipulation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .controls {
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px 5px 5px 0;
+            cursor: pointer;
+        }
+        #content-box {
+            padding: 20px;
+            border: 1px solid #ccc;
+            min-height: 100px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>DOM Manipulation</h1>
+    
+    <div class="controls">
+        <label for="color-input">Enter a color name:</label>
+        <input type="text" id="color-input" placeholder="e.g., red, blue, #ff0000">
+        <button id="bg-btn">Change Background</button>
+    </div>
+    
+    <div class="controls">
+        <label for="text-input">Enter new text content:</label>
+        <input type="text" id="text-input" placeholder="Type something...">
+        <button id="text-btn">Update Text</button>
+    </div>
+    
+    <div id="content-box">
+       updated based on your input.
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
