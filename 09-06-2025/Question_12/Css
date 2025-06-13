@@ -1,0 +1,76 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6; /* Improved line spacing */
+    font-size: 14px;
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: hidden;
+    color: #333; /* Better contrast */
+    background-color: #f9f9f9;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+    color: #222;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2a2a2a;
+}
+
+p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    hyphens: auto; /* Better text wrapping */
+}
+
+article {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@media (min-width: 600px) {
+    body {
+        font-size: 16px;
+        padding: 30px;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    p {
+        line-height: 1.7; /* Slightly more spacing on larger screens */
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 17px;
+        padding: 40px;
+    }
+    
+    main {
+        max-width: 900px;
+    }
+}
