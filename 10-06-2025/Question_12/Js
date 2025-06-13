@@ -1,0 +1,23 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const list = document.querySelector('#item-list');
+    const button = document.getElementById('add-btn');
+    let itemCount = 3; 
+
+    button.addEventListener('click', function() {
+        itemCount++;
+        const newItem = document.createElement('li');
+        newItem.textContent = `New Item ${itemCount - 3}`;
+        
+       
+        if (itemCount % 2 === 1) {
+            newItem.style.fontWeight = 'bold';
+            newItem.style.color = 'blue';
+        } else {
+           
+            newItem.style.fontStyle = 'italic';
+            newItem.style.color = 'red';
+        }
+        
+        list.appendChild(newItem);
+    });
+});
