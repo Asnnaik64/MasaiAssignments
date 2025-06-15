@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        #paragraphContainer {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            min-height: 50px;
+        }
+        #paragraphContainer p {
+            padding: 8px;
+            background-color: #f5f5f5;
+            border-left: 3px solid #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <h1>Paragraph Manager</h1>
+    
+    <button id="addBtn">Add Paragraph</button>
+    <button id="removeBtn">Remove Last Paragraph</button>
+    
+    <div id="paragraphContainer"></div>
+
+    <script>
+        // Get references to DOM elements
+        const addBtn = document.getElementById('addBtn');
+        const removeBtn = document.getElementById('removeBtn');
+        const paragraphContainer = document.getElementById('paragraphContainer');
+
+        // Counter to keep track of paragraph numbers
+        let paragraphCount = 1;
+
+        // Function to add a new paragraph
+        function addParagraph() {
+            // Create a new paragraph element
+            const newParagraph = document.createElement('p');
+            
+            // Set the paragraph text content
+            newParagraph.textContent = `This is paragraph ${paragraphCount++}.`;
+            
+            // Append the new paragraph to the container
+            paragraphContainer.appendChild(newParagraph);
+        }
+
+        // Function to remove the last paragraph
+        function removeLastParagraph() {
+            // Check if there are any paragraphs to remove
+            if (paragraphContainer.children.length > 0) {
+                // Get the last child element
+                const lastChild = paragraphContainer.lastChild;
+                
+                // Remove the last child from the container
+                paragraphContainer.removeChild(lastChild);
+                
+                // Decrement the counter if paragraphs are removed
+                paragraphCount--;
+            }
+        }
+
+        // Add event listeners to buttons
+        addBtn.addEventListener('click', addParagraph);
+        removeBtn.addEventListener('click', removeLastParagraph);
+    </script>
+</body>
+</html>
