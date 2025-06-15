@@ -1,0 +1,22 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const outerDiv = document.getElementById('outerDiv');
+    const middleDiv = document.getElementById('middleDiv');
+    const innerDiv = document.getElementById('innerDiv');
+    const outerBtn = document.getElementById('outerBtn');
+    const middleBtn = document.getElementById('middleBtn');
+    const innerBtn = document.getElementById('innerBtn');
+
+    outerDiv.addEventListener('click', () => alert('Outer Div (bubbling)'));
+    middleDiv.addEventListener('click', () => alert('Middle Div (bubbling)'));
+    innerDiv.addEventListener('click', () => alert('Inner Div (bubbling)'));
+    outerBtn.addEventListener('click', () => alert('Outer Button'));
+    middleBtn.addEventListener('click', () => alert('Middle Button'));
+    innerBtn.addEventListener('click', (e) => {
+        alert('Inner Button (propagation stopped)');
+        e.stopPropagation();
+    });
+
+    outerDiv.addEventListener('click', () => alert('Outer Div (capturing)'), true);
+    middleDiv.addEventListener('click', () => alert('Middle Div (capturing)'), true);
+    innerDiv.addEventListener('click', () => alert('Inner Div (capturing)'), true);
+});
