@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi-User Shopping Cart</title>
+</head>
+<body>
+
+  <h1>Multi-User Shopping Cart</h1>
+
+  <input id="username" placeholder="Enter Username">
+  <button id="loginBtn">Login</button>
+
+  <h2 id="currentUser">Not Logged In</h2>
+
+  <input id="itemName" placeholder="Item Name">
+  <input id="itemPrice" placeholder="Item Price">
+  <input id="itemQuantity" placeholder="Quantity">
+  <button id="addBtn">Add Item</button>
+
+  <h3>Cart</h3>
+  <ul id="cartList">
+  </ul>
+
+  <h4>Total Cost: <span id="totalCost">0</span></h4>
+
+  <script>
+    var username = document.getElementById("username");
+
+    var loginBtn = document.getElementById("loginBtn");
+
+    var currentUser = document.getElementById("currentUser");
+
+    var itemName = document.getElementById("itemName");
+
+    var itemPrice = document.getElementById("itemPrice");
+
+    var itemQuantity = document.getElementById("itemQuantity");
+
+    var addBtn = document.getElementById("addBtn");
+
+    var cartList = document.getElementById("cartList");
+
+    var totalCost = document.getElementById("totalCost");
+
+    var users = {};
+
+    // Loading from localStorage
+    var saved = localStorage.getItem("shoppingCarts");
+
+    if (saved) {
+      users = JSON.parse(saved);
+    }
+
+    var currentUsername = "";
+
+    function renderCart(username) {
+      var cart = users[username] || [];
+
+      cartList.innerHTML = '';
+      var total = 0;
+
+      for (let i = 0; i < cart.length; i++) {
+        var item = cart[i];
+        var li = document.createElement("li");
+
+        li.textContent = item.itemName + " - " + item.quantity + " x $" + item.price;
+
+        var editBtn = document.createElement("button");
+
+        editBtn.textContent = "Edit Quantity";
+
+        editBtn.onclick = function(){
+          var newQty = prompt("Enter new Quantity.", item.quantity);
+          if (newQty && !isNaN(newQty) && newQty > 0) {
+            item.quantity = parseInt(newQty);
+            save();
+            renderCart(username);
+          }
+        }
+
+        var deleteBtn = document.createElement("button");
+
+        deleteBtn.textContent = "Remove";
+
+        deleteBtn.onclick = function(){
+          users[username].splice(i, 1);
+          save();
+          renderCart(username);
+        }
+
+        li.appendChild(editBtn);
+        li.appendChild(deleteBtn);
+        cartList.appendChild(li);
+
+        total += item.quantity * item.price;
+      }
+
+      totalCost.textContent = total;
+    }
+
+    function save(){
+      localStorage.setItem("shoppingCarts", JSON.stringify(users));
+    }
+
+    loginBtn.onclick = function(){
+      var user = username.value.trim();
+
+      if (user.length == 0) {
+        alert("Username cannot be empty.");
+        return;
+      }
+
+      currentUsername = user;
+
+      if (!users[user]) {
+        users[user] = []; // create new
+        save();
+      }
+
+      currentUser.textContent = "Current User: " + currentUsername;
+
+      renderCart(currentUsername);
+    }
+
+    addBtn.onclick = function(){
+      if (currentUsername.length == 0) {
+        alert("Login first.");
+        return;
+      }
+
+      var item = itemName.value.trim();
+      var price = parseFloat(itemPrice.value);
+      var qty = parseInt(itemQuantity.value);
+
+      if (item.length == 0) {
+        alert("Item cannot be empty.");
+        return;
+      }
+      if (isNaN(price) ||
+          isNaN(qty) ||
+          qty <= 0 ||
+          price <= 0) {
+        alert("Invalid price or quantity.");
+        return;
+      }
+
+      users[currentUsername].push({ itemName: item, price: price, quantity: qty });
+
+      save();
+      renderCart(currentUsername);
+      itemName.value = '';
+      itemPrice.value = '';
+      itemQuantity.value = '';
+    }
+  </script>
+
+</body>
+</html>
