@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Theme Selector</title>
+</head>
+<body>
+
+  <h1>Select Your Theme</h1>
+
+  <select id="themeSelect">
+    <option value="light">Light</option>
+    <option value="dark">Dark</option>
+    <option value="blue">Blue</option>
+  </select>
+
+  <script>
+    var select = document.getElementById("themeSelect");
+
+    function applyTheme(theme) {
+      if (theme == "dark") {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+      } else if (theme == "blue") {
+        document.body.style.backgroundColor = "lightblue";
+        document.body.style.color = "darkblue";
+      } else {
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+      }
+    }
+
+    var saved = sessionStorage.getItem("selectedTheme");
+
+    if (saved) {
+      select.value = saved;
+      applyTheme(saved);
+    } else {
+      applyTheme("light");
+
+      select.value = "light";
+    }
+
+    select.addEventListener("change", function(){
+      var selected = select.value;
+      applyTheme(selected);
+      sessionStorage.setItem("selectedTheme", selected);
+    });
+  </script>
+
+</body>
+</html>
