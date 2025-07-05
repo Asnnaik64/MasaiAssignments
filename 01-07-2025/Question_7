@@ -1,0 +1,26 @@
+// Q: 7
+// Title:
+// L0 - Using apply() to Multiply Numbers
+
+// Problem Statement:
+// Write a function called multiplyNumbers that accepts two numbers as arguments and uses the apply() method to multiply them. The function should return the product.
+
+
+function multiplyNumbers(a, b) {
+  return multiply.apply(this, [a, b]);
+}
+
+function multiply(x, y) {
+  return x * y;
+}
+
+function multiplyNumbers(a, b) {
+  return multiply.apply(this, [a, b]);
+}
+
+function multiply(x, y) {
+  return x * y;
+}
+
+console.log(multiplyNumbers(5, 3));  
+console.log(multiplyNumbers(2, 8)); 
