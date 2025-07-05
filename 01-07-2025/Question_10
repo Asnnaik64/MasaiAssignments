@@ -1,0 +1,29 @@
+// Q: 10
+// Title:
+// L1 - Using bind() to Set this Context
+
+// Problem Statement:
+// Create an object car with a property brand and a method getBrand that returns the car's brand. Then, create another function reference using the bind() method that permanently sets the this context to the car object, and call the bound function.
+
+// Example:
+// let car = {
+//   brand: "Tesla",
+//   getBrand: function() {
+//     return this.brand;
+//   }
+// };
+
+// let boundGetBrand = car.getBrand.bind(car);
+// console.log(boundGetBrand());  // Output: "Tesla"
+
+
+let car = {
+  brand: "Tesla",
+  getBrand: function() {
+    return this.brand;
+  }
+};
+
+let boundGetBrand = car.getBrand.bind(car);
+
+console.log(boundGetBrand());  
