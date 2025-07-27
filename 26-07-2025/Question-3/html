@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>User Dashboard</h1>
+
+    <form id="userForm">
+      <input type="text" id="name" placeholder="Name">
+      <input type="email" id="email" placeholder="Email">
+      <button type="submit">Add User</button>
+    </form>
+
+    <div id="message" class="message-box"></div>
+
+    <h2>All Users</h2>
+    <ul id="userList" class="user-list"></ul>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
