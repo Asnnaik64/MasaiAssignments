@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Traversal Exercise</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f0f0f0;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        li:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul id="list">
+            <li id="item1">Item 1</li>
+            <li id="item2">Item 2</li>
+            <li id="item3">Item 3</li>
+        </ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
