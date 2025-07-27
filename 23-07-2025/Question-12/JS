@@ -1,0 +1,14 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const item2 = document.getElementById('item2');
+    
+    item2.addEventListener('click', function() {
+        const parentNode = this.parentNode;
+        alert('Parent node content: ' + parentNode.textContent.trim());
+        
+        const nextSibling = this.nextElementSibling;
+        const prevSibling = this.previousElementSibling;
+        
+        console.log('Previous sibling text:', prevSibling ? prevSibling.textContent : 'No previous sibling');
+        console.log('Next sibling text:', nextSibling ? nextSibling.textContent : 'No next sibling');
+    });
+});
