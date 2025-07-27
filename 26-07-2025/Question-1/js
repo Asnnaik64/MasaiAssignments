@@ -1,0 +1,60 @@
+function fetchProducts() {
+  const category = document.getElementById('category').value;
+  const minPrice = document.getElementById('minPrice').value;
+  const maxPrice = document.getElementById('maxPrice').value;
+  const sort = document.getElementById('sort').value;
+
+  const status = document.getElementById('status');
+  const grid = document.getElementById('productGrid');
+
+  status.textContent = "Loading...";
+  grid.innerHTML = "";
+
+  const baseURL = "https://mockapi.io/products";
+  const params = new URLSearchParams();
+
+  if (category) params.append("category", category);
+  if (minPrice) params.append("min_price", minPrice);
+  if (maxPrice) params.append("max_price", maxPrice);
+  if (sort) params.append("sort", sort);
+
+  const url = `${baseURL}?${params.toString()}`;
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Network error");
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.length === 0) {
+        status.textContent = "No products found.";
+        return;
+      }
+
+      status.textContent = "";
+      data.forEach(product => {
+        const card = document.createElement('div');
+        card.className = "product-card";
+
+        const img = document.createElement('img');
+        img.src = product.image || "https://via.placeholder.com/100";
+        
+        const name = document.createElement('div');
+        name.textContent = product.name;
+
+        const price = document.createElement('div');
+        price.textContent = "$" + product.price;
+
+        card.appendChild(img);
+        card.appendChild(name);
+        card.appendChild(price);
+
+        grid.appendChild(card);
+      });
+    })
+    .catch(error => {
+      status.textContent = "Failed to fetch products.";
+    });
+}
