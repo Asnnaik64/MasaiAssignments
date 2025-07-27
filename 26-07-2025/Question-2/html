@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Registration</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>User Registration</h2>
+
+    <form id="registerForm">
+      <input type="text" id="name" placeholder="Full Name">
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Password">
+      <button type="submit">Register</button>
+    </form>
+
+    <div id="message" class="message-box"></div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
