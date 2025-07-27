@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Task List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    #taskInput {
+      padding: 8px;
+      width: 70%;
+    }
+    #addTask {
+      padding: 8px 15px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px;
+      margin: 5px 0;
+      background-color: #f0f0f0;
+      cursor: pointer;
+    }
+    li:hover {
+      background-color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+  <input id="taskInput" type="text" placeholder="Enter task">
+  <button id="addTask">Add Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    const addTaskButton = document.getElementById('addTask');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+
+    addTaskButton.onclick = function () {
+      const taskText = taskInput.value.trim();
+      if (taskText) {
+        const newTask = document.createElement('li');
+        newTask.textContent = taskText;
+        taskList.appendChild(newTask);
+        taskInput.value = '';
+      }
+    };
+
+    taskList.addEventListener('click', function (e) {
+      if (e.target.tagName === 'LI') {
+        e.target.remove();
+      }
+    });
+  </script>
+</body>
+</html>
