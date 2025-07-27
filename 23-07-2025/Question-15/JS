@@ -1,0 +1,172 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const taskInput = document.getElementById('taskInput');
+  const addTaskBtn = document.getElementById('addTask');
+  const taskList = document.getElementById('taskList');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const sortBtn = document.getElementById('sortTasks');
+  const totalCountEl = document.getElementById('totalCount');
+  const completedCountEl = document.getElementById('completedCount');
+  const incompleteCountEl = document.getElementById('incompleteCount');
+
+  let tasks = [];
+  let currentFilter = 'all';
+
+  function init() {
+    loadTasks();
+    renderTasks();
+    updateStats();
+  }
+
+  function loadTasks() {
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      tasks = JSON.parse(savedTasks);
+    }
+  }
+
+  function saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
+  function addTask(text) {
+    if (text.trim() === '') return;
+
+    const newTask = {
+      id: Date.now(),
+      text,
+      completed: false
+    };
+
+    tasks.push(newTask);
+    saveTasks();
+    renderTasks();
+    updateStats();
+    taskInput.value = '';
+  }
+
+  function deleteTask(id) {
+    tasks = tasks.filter(task => task.id !== id);
+    saveTasks();
+    renderTasks();
+    updateStats();
+  }
+
+  function toggleTaskCompletion(id) {
+    tasks = tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    saveTasks();
+    renderTasks();
+    updateStats();
+  }
+
+  function filterTasks(filter) {
+    currentFilter = filter;
+    renderTasks();
+    updateActiveFilterButton();
+  }
+
+  function sortTasks() {
+    tasks.sort((a, b) => a.text.localeCompare(b.text));
+    renderTasks();
+  }
+
+  function updateActiveFilterButton() {
+    filterBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filter === currentFilter);
+    });
+  }
+
+  function updateStats() {
+    const total = tasks.length;
+    const completed = tasks.filter(task => task.completed).length;
+    const incomplete = total - completed;
+
+    totalCountEl.textContent = total;
+    completedCountEl.textContent = completed;
+    incompleteCountEl.textContent = incomplete;
+  }
+
+  function renderTasks() {
+    taskList.innerHTML = '';
+
+    const filteredTasks = tasks.filter(task => {
+      if (currentFilter === 'completed') return task.completed;
+      if (currentFilter === 'incomplete') return !task.completed;
+      return true; 
+    });
+
+    if (filteredTasks.length === 0) {
+      const emptyMessage = document.createElement('li');
+      emptyMessage.textContent = 'No tasks found';
+      emptyMessage.style.textAlign = 'center';
+      emptyMessage.style.padding = '20px';
+      emptyMessage.style.color = '#95a5a6';
+      taskList.appendChild(emptyMessage);
+      return;
+    }
+
+    filteredTasks.forEach(task => {
+      const taskItem = document.createElement('li');
+      taskItem.className = 'task-item';
+      taskItem.dataset.id = task.id;
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.className = 'task-checkbox';
+      checkbox.checked = task.completed;
+      taskItem.appendChild(checkbox);
+
+      const taskText = document.createElement('span');
+      taskText.className = 'task-text';
+      if (task.completed) {
+        taskText.classList.add('completed');
+      }
+      taskText.textContent = task.text;
+      taskItem.appendChild(taskText);
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-btn';
+      deleteBtn.textContent = 'Delete';
+      taskItem.appendChild(deleteBtn);
+
+      taskList.appendChild(taskItem);
+    });
+  }
+
+  taskList.addEventListener('click', (e) => {
+    const taskItem = e.target.closest('.task-item');
+    if (!taskItem) return;
+
+    const taskId = parseInt(taskItem.dataset.id);
+
+    if (e.target.classList.contains('delete-btn')) {
+      deleteTask(taskId);
+    } else if (e.target.classList.contains('task-checkbox')) {
+      toggleTaskCompletion(taskId);
+    }
+  });
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterTasks(btn.dataset.filter);
+    });
+  });
+
+  addTaskBtn.addEventListener('click', () => {
+    addTask(taskInput.value);
+  });
+
+  taskInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      addTask(taskInput.value);
+    }
+  });
+
+  sortBtn.addEventListener('click', sortTasks);
+
+  init();
+});
