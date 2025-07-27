@@ -1,0 +1,77 @@
+const form = document.getElementById('userForm');
+const nameInput = document.getElementById('name');
+const emailInput = document.getElementById('email');
+const userList = document.getElementById('userList');
+const message = document.getElementById('message');
+
+let existingEmails = [];
+
+const API_URL = "https://mockapi.io/users"; 
+
+function fetchUsers() {
+  userList.innerHTML = '';
+  message.textContent = 'Loading...';
+  fetch(API_URL)
+    .then(res => res.json())
+    .then(data => {
+      existingEmails = data.map(user => user.email.toLowerCase());
+      if (data.length === 0) {
+        message.textContent = 'No users found.';
+      } else {
+        message.textContent = '';
+        data.forEach(user => {
+          const li = document.createElement('li');
+          li.textContent = `${user.name} - ${user.email}`;
+          userList.appendChild(li);
+        });
+      }
+    })
+    .catch(() => {
+      message.textContent = 'Failed to fetch users.';
+    });
+}
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim().toLowerCase();
+
+  if (!name || !email) {
+    message.style.color = 'red';
+    message.textContent = 'Please fill all fields.';
+    return;
+  }
+
+  if (existingEmails.includes(email)) {
+    message.style.color = 'red';
+    message.textContent = 'Email already exists.';
+    return;
+  }
+
+  const newUser = { name, email };
+
+  fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newUser)
+  })
+    .then(res => {
+      if (!res.ok) throw new Error("API error");
+      return res.json();
+    })
+    .then(data => {
+      message.style.color = 'green';
+      message.textContent = 'User added successfully!';
+      form.reset();
+      fetchUsers();
+    })
+    .catch(() => {
+      message.style.color = 'red';
+      message.textContent = 'Failed to add user.';
+    });
+});
+
+fetchUsers();
