@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enhanced Todo List</title>
+  <style>
+    .completed {
+      text-decoration: line-through;
+      color: grey;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Enhanced Todo List</h1>
+
+  <input id="taskInput" placeholder="Add a task">
+  <button id="addBtn">Add</button>
+  <br><br>
+  
+  <input id="searchInput" placeholder="Search task">
+  
+  <ul id="taskList">
+  </ul>
+
+  <script>
+    var taskList = document.getElementById("taskList");
+
+    var taskInput = document.getElementById("taskInput");
+
+    var searchInput = document.getElementById("searchInput");
+
+    var addBtn = document.getElementById("addBtn");
+
+    var tasks = [];
+
+    //Load from localStorage
+    var saved = localStorage.getItem("tasks");
+
+    if (saved) {
+      tasks = JSON.parse(saved);
+      render(tasks);
+    }
+
+    addBtn.onclick = function(){
+      var text = taskInput.value.trim();
+
+      if (text.length == 0) return;
+
+      var newTask = {
+        id: Date.now(), 
+        text: text, 
+        completed: false
+      };
+      tasks.push(newTask);
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+
+      render(tasks);
+      taskInput.value = '';
+    }
+
+    searchInput.addEventListener("input", function(){
+      var search = searchInput.value.toLowerCase();
+
+      var filtered = tasks.filter(function(item){
+        return item.text.toLowerCase().includes(search);
+      });
+
+      render(filtered);
+    });
+
+    function render(arr) {
+      taskList.innerHTML = '';
+      arr.forEach(function(item){
+        var li = document.createElement("li");
+
+        li.textContent = item.text;
+
+        if (item.completed) {
+          li.classList.add("completed");
+
+        }
+
+        var completeBtn = document.createElement("button");
+
+        completeBtn.textContent = "Mark as Completed";
+
+        completeBtn.onclick = function(){
+          item.completed = !item.completed;
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+
+          render(tasks);
+        }
+
+        var deleteBtn = document.createElement("button");
+
+        deleteBtn.textContent = "Remove";
+
+        deleteBtn.onclick = function(){
+          tasks = tasks.filter(function(t){
+            return t.id !== item.id;
+          });
+
+          localStorage.setItem("tasks", JSON.stringify(tasks));
+
+          render(tasks);
+        }
+
+        li.appendChild(completeBtn);
+        li.appendChild(deleteBtn);
+        taskList.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>
