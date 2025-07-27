@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Propagation</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .outer { padding: 30px; background: #f0f0f0; }
+        .middle { padding: 20px; background: #e0e0e0; }
+        .inner { padding: 10px; background: #d0d0d0; }
+        button { padding: 5px 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="outer" id="outerDiv">
+        Outer Div
+        <div class="middle" id="middleDiv">
+            Middle Div
+            <div class="inner" id="innerDiv">
+                Inner Div
+                <button id="innerBtn">Inner Button</button>
+            </div>
+            <button id="middleBtn">Middle Button</button>
+        </div>
+        <button id="outerBtn">Outer Button</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
