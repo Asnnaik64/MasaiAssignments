@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Task Manager</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    #taskForm {
+      display: flex;
+      margin-bottom: 20px;
+    }
+    #taskInput {
+      flex-grow: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+    }
+    #addTask {
+      padding: 10px 15px;
+      background-color: #2ecc71;
+      color: white;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    #addTask:hover {
+      background-color: #27ae60;
+    }
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .filter-btn {
+      padding: 8px 15px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .filter-btn:hover {
+      background-color: #2980b9;
+    }
+    .filter-btn.active {
+      background-color: #2980b9;
+    }
+    #sortTasks {
+      padding: 8px 15px;
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+    #sortTasks:hover {
+      background-color: #8e44ad;
+    }
+    #taskList {
+      list-style-type: none;
+      padding: 0;
+    }
+    .task-item {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      margin-bottom: 8px;
+      background-color: white;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .task-checkbox {
+      margin-right: 10px;
+    }
+    .task-text {
+      flex-grow: 1;
+    }
+    .task-text.completed {
+      text-decoration: line-through;
+      color: #95a5a6;
+    }
+    .delete-btn {
+      padding: 5px 10px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .delete-btn:hover {
+      background-color: #c0392b;
+    }
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #ecf0f1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Advanced Task Manager</h1>
+  
+  <div id="taskForm">
+    <input id="taskInput" type="text" placeholder="Enter a new task...">
+    <button id="addTask">Add Task</button>
+  </div>
+  
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All Tasks</button>
+    <button class="filter-btn" data-filter="completed">Completed</button>
+    <button class="filter-btn" data-filter="incomplete">Incomplete</button>
+  </div>
+  
+  <button id="sortTasks">Sort Alphabetically</button>
+  
+  <ul id="taskList"></ul>
+  
+  <div class="stats">
+    <span>Total: <span id="totalCount">0</span></span>
+    <span>Completed: <span id="completedCount">0</span></span>
+    <span>Incomplete: <span id="incompleteCount">0</span></span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
