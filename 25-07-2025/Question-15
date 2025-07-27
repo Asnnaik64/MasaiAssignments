@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search and Filter Products</title>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+      gap: 20px;
+    }
+    .item {
+      border: 1px solid #ccc;
+      padding: 20px;
+      text-align: center;
+    }
+    .item img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search and Filter Products</h1>
+
+  <input id="search" type="text" placeholder="Search by title">
+  <select id="filter">
+  </select>
+  <select id="sort">
+    <option value="">Sort by</option>
+    <option value="ascending">Price: Low to High</option>
+    <option value="descending">Price: High to Low</option>
+  </select>
+
+  <p>Products Count: <span id="counter">0</span></p>
+
+  <div id="products" class="grid">
+  </div>
+
+  <script>
+    let products = [];
+
+    let search = document.getElementById("search");
+
+    let filter = document.getElementById("filter");
+
+    let sort = document.getElementById("sort");
+
+    let productsContainer = document.getElementById("products");
+
+    let counter = document.getElementById("counter");
+
+    async function fetchProducts() {
+      let res = await fetch("https://fakestoreapi.com/products");
+
+      products = await res.json();
+
+      await fetchCategories();
+
+      renderProducts(products);
+    }
+
+    async function fetchCategories() {
+      let res = await fetch("https://fakestoreapi.com/products/categories");
+
+      let categories = await res.json();
+
+      filter.innerHTML = "<option value=''>All Categories</option>";
+
+      categories.forEach(function (item) {
+        filter.innerHTML += "<option value='" + item + "'>" + item + "</option>";
+      });
+    }
+
+    search.addEventListener("input", filterProducts);
+    filter.addEventListener("change", filterProducts);
+    sort.addEventListener("change", filterProducts);
+
+    function filterProducts() {
+      let searchTerm = search.value.toLowerCase().trim();
+
+      let category = filter.value;
+
+      let sortOption = sort.value;
+
+      let filterList = products.filter(function (item) {
+        return (
+          item.title.toLowerCase().includes(searchTerm) &&
+          (category === '' || item.category === category)
+        );
+      });
+
+      if (sortOption === "ascending") {
+        filterList.sort(function (a, b) {
+          return a.price - b.price;
+        });
+      } else if (sortOption === "descending") {
+        filterList.sort(function (a, b) {
+          return b.price - a.price;
+        });
+      }
+
+      renderProducts(filterList);
+    }
+
+    function renderProducts(items) {
+      productsContainer.innerHTML = "";
+      items.forEach(function (item) {
+        productsContainer.innerHTML += `
+          <div class='item'>
+            <img src="${item.image}" alt="${item.title}">
+            <h3>${item.title}</h3>
+            <p>$${item.price}</p>
+          </div>`;
+      });
+      counter.textContent = items.length;
+    }
+
+    fetchProducts();
+  </script>
+
+</body>
+</html>
