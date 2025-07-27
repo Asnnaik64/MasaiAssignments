@@ -1,0 +1,66 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 30px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
+  position: relative;
+}
+
+.task-title {
+  font-weight: bold;
+}
+
+.task-status {
+  font-size: 14px;
+  margin-left: 10px;
+  color: gray;
+}
+
+.task-actions {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+}
+
+.task-actions button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.edit-form input,
+.edit-form select,
+.edit-form button {
+  margin-top: 5px;
+  padding: 5px;
+}
