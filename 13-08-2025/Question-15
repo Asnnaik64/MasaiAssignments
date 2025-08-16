@@ -1,0 +1,35 @@
+// Q: 15
+// L1: Understanding Execution Contexts and Call Stack in JavaScript
+// Description:
+// Write a function countDown() that takes a number and logs the countdown from that number to zero. Additionally, within the countdown function, call a helper function logMessage() that logs a message with the current countdown value.
+
+// Example:
+// function logMessage(count) {
+//   console.log(`Countdown at ${count}`);
+// }
+
+// function countDown(num) {
+//   if (num < 0) return;
+//   logMessage(num);
+//   countDown(num - 1);
+// }
+
+// countDown(3);
+// Expected Output:
+// Countdown at 3
+// Countdown at 2
+// Countdown at 1
+// Countdown at 0
+
+
+function logMessage(count) {
+  console.log(`Countdown at ${count}`);
+}
+
+function countDown(num) {
+  if (num < 0) return;
+  logMessage(num);
+  countDown(num - 1);
+}
+
+countDown(3);
