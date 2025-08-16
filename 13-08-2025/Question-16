@@ -1,0 +1,33 @@
+Q: 16
+// L1: Understanding Execution Contexts and Call Stack with Nested Functions
+// Description:
+// Write a function outerFunction() that has a nested function innerFunction(). The innerFunction() should log the value of a variable declared in the outerFunction() scope. Then call the innerFunction() inside the outerFunction().
+
+// Example:
+// function outerFunction() {
+//   const outerVar = "I am from outer scope";
+  
+//   function innerFunction() {
+//     console.log(outerVar);
+//   }
+
+//   innerFunction();
+// }
+
+// outerFunction();
+// Expected Output:
+// I am from outer scope
+
+
+
+function outerFunction() {
+  const outerVar = "I am from outer scope";
+  
+  function innerFunction() {
+    console.log(outerVar);
+  }
+
+  innerFunction();
+}
+
+outerFunction();
