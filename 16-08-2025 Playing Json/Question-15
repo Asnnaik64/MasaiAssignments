@@ -1,0 +1,72 @@
+
+// Q: 15
+// L1 - Managing Student List with JSON Methods
+// Problem Statement:
+// You're given an array of student names. Your task is to write a program that:
+
+// Adds a new student name at a specific index using splice().
+// Checks whether a student's name exists using includes().
+// Converts the final array into a comma-separated string using join().
+// Also, debug the following code snippet and make necessary corrections:
+
+// function manageStudents() {
+//     let students = ["Alice", "Bob", "Charlie"];
+
+//     // Add "David" at index 1
+//     students.splice(1, 0, "David");
+
+//     // Check if "Eve" is in the list
+//     console.log(students.includes("Eve"));  // Should return false
+
+//     // Convert the array to a string with names separated by commas
+//     console.log(students.join(","));  // Expected: "Alice,David,Bob,Charlie"
+// }
+
+// manageStudents();
+// Tasks:
+// Debug any logical issues.
+// Add additional test cases to ensure proper functioning.
+
+
+
+function manageStudents() {
+    let students = ["Alice", "Bob", "Charlie"];
+
+    students.splice(1, 0, "David");
+
+    let hasEve = students.includes("Eve");
+    console.log("Is Eve in the list?", hasEve);  
+
+    let studentListString = students.join(",");
+    console.log("Student List:", studentListString);  
+}
+
+manageStudents();
+
+
+// ✅ Additional Test Cases
+function runTestCases() {
+    console.log("\n--- Test Case 1: Insert at Start ---");
+    let list1 = ["Tom", "Jerry"];
+    list1.splice(0, 0, "Spike");
+    console.log("Expected: Spike,Tom,Jerry ->", list1.join(","));
+
+    console.log("\n--- Test Case 2: Insert at End ---");
+    let list2 = ["Anna", "Elsa"];
+    list2.splice(list2.length, 0, "Olaf");
+    console.log("Expected: Anna,Elsa,Olaf ->", list2.join(","));
+
+    console.log("\n--- Test Case 3: Check Existing Name ---");
+    let list3 = ["Leo", "Donnie", "Raph"];
+    console.log("Includes 'Donnie'? Expected: true ->", list3.includes("Donnie"));
+
+    console.log("\n--- Test Case 4: Check Non-existing Name ---");
+    console.log("Includes 'Mikey'? Expected: false ->", list3.includes("Mikey"));
+
+    console.log("\n--- Test Case 5: Join Array ---");
+    let list4 = ["Harry", "Ron", "Hermione"];
+    let joined = list4.join(", ");
+    console.log("Expected: Harry, Ron, Hermione ->", joined);
+}
+
+runTestCases();
