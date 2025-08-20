@@ -1,0 +1,44 @@
+// Q: 14
+// L1 - JSON Stringify and Parse Operations
+// Problem Statement:
+// Write a JavaScript program that:
+
+// Takes a JavaScript object with user details such as name, age, email, and isAdmin.
+// Converts it into a JSON string using JSON.stringify().
+// Stores it in a variable and then parses it back to a JavaScript object using JSON.parse().
+// Accesses and prints the values of each key from the parsed object.
+// Example
+// Input:
+// const user = {
+//   name: "John Doe",
+//   age: 25,
+//   email: "john@example.com",
+//   isAdmin: false
+// };
+
+// Output:
+// Name: John Doe
+// Age: 25
+// Email: john@example.com
+// Admin: false
+// Notes
+// Ensure the data is not modified during stringify/parse cycle.
+// Console log each key's value after parsing.
+
+
+
+const user = {
+  name: "John Doe",
+  age: 25,
+  email: "john@example.com",
+  isAdmin: false
+};
+
+const jsonString = JSON.stringify(user);
+
+const parsedUser = JSON.parse(jsonString);
+
+console.log("Name:", parsedUser.name);
+console.log("Age:", parsedUser.age);
+console.log("Email:", parsedUser.email);
+console.log("Admin:", parsedUser.isAdmin);
