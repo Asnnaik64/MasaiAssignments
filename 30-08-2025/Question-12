@@ -3,42 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Semantic Webpage</title>
+    <title>Contact Us</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>Welcome to My Awesome Blog</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <h1>Contact Us</h1>
 
-    <main>
-        <section>
-            <h2>Recent Articles</h2>
+    <form action="#" method="post">
+        <div>
+            <label for="userName">Name:</label>
+            <input type="text" id="userName" name="userName" required>
+        </div>
 
-            <article>
-                <h3>The Power of Semantic HTML</h3>
-                <p>Semantic HTML elements clearly define the purpose of the content they contain. This not only helps search engines understand your webpage better but also improves accessibility for users relying on assistive technologies.</p>
-                <p>Using tags like `<header>`, `<nav>`, `<section>`, `<article>`, and `<footer>` makes your code more readable and maintainable.</p>
-            </article>
+        <div>
+            <label for="userEmail">Email:</label>
+            <input type="email" id="userEmail" name="userEmail" required>
+        </div>
 
-            <article>
-                <h3>Getting Started with Web Development</h3>
-                <p>Web development is an exciting field! To begin, focus on the core technologies: HTML for structure, CSS for styling, and JavaScript for interactivity. Consistent practice and building small projects are key to mastering these skills.</p>
-                <p>There are countless resources available online, from free tutorials to comprehensive courses, to help you on your journey.</p>
-            </article>
-        </section>
-    </main>
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">--Please choose an option--</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
 
-    <footer>
-        <p>&copy; 2025 My Awesome Blog. All rights reserved.</p>
-    </footer>
+        <div>
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Send Message</button>
+        </div>
+    </form>
 
 </body>
 </html>
