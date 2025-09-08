@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Display Properties</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>CSS Display Properties Demo</h1>
+    
+    <div id="block-element">Block Element</div>
+    
+    <span id="inline-element">Inline Element</span>
+    <span>Another inline element for comparison.</span>
+    
+    <div id="inline-block-element">Inline-Block Element</div>
+    
+    <div id="hidden-element">Hidden Element</div>
+    
+    <p>This is a paragraph to observe how different display properties affect the layout. Notice how each element interacts with the surrounding content.</p>
+    
+    <button onclick="toggleHidden()">Toggle Hidden Element</button>
+    
+    <script>
+        function toggleHidden() {
+            const element = document.getElementById('hidden-element');
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
