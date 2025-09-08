@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Grid</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 100px);
+            gap: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .grid-item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 5px;
+        }
+        .item1 { background: #FF5733; } /* Red */
+        .item2 { background: #33FF57; } /* Green */
+        .item3 { background: #3357FF; } /* Blue */
+        .item4 { background: #F3FF33; color: black; } /* Yellow */
+        .item5 { background: #FF33A8; } /* Pink */
+        .item6 { background: #33FFF3; } /* Cyan */
+        .item7 { background: #A833FF; } /* Purple */
+        .item8 { background: #FF8C33; } /* Orange */
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-item item1">1</div>
+        <div class="grid-item item2">2</div>
+        <div class="grid-item item3">3</div>
+        <div class="grid-item item4">4</div>
+        <div class="grid-item item5">5</div>
+        <div class="grid-item item6">6</div>
+        <div class="grid-item item7">7</div>
+        <div class="grid-item item8">8</div>
+    </div>
+</body>
+</html>
