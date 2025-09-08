@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model Demonstration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .box {
+            width: 200px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .box1 {
+            background-color: #ffcccc;
+            padding: 20px;
+            border: 10px solid #ff6666;
+            margin: 15px;
+            box-sizing: content-box;
+        }
+        
+        .box2 {
+            background-color: #ccffcc;
+            padding: 30px;
+            border: 5px dashed #66aa66;
+            margin: 25px;
+            box-sizing: border-box;
+        }
+        
+        .box3 {
+            background-color: #ccccff;
+            padding: 10px 30px;
+            border: 8px dotted #6666ff;
+            margin: 10px 40px;
+            box-sizing: content-box;
+        }
+        
+        .box-info {
+            margin-top: 20px;
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Box Model Demonstration</h1>
+    
+    <div class="box-container">
+        <div class="box box1">
+            Content Box<br>(box-sizing: content-box)
+        </div>
+        
+        <div class="box box2">
+            Border Box<br>(box-sizing: border-box)
+        </div>
+        
+        <div class="box box3">
+            Mixed Properties<br>(content-box)
+        </div>
+    </div>
+    
+    <div class="box-info">
+        Note how the border-box maintains the total width including padding and border,
+        while content-box adds padding and border to the specified width.
+    </div>
+</body>
+</html>
