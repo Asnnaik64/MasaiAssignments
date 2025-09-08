@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Header and Fixed Footer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Sticky Header</h1>
+    </header>
+
+    <main>
+        <p>Content paragraph 1</p>
+        <p>Content paragraph 2</p>
+        <p>Content paragraph 3</p>
+        <p>Content paragraph 4</p>
+        <p>Content paragraph 5</p>
+        <p>Content paragraph 6</p>
+        <p>Content paragraph 7</p>
+        <p>Content paragraph 8</p>
+        <p>Content paragraph 9</p>
+        <p>Content paragraph 10</p>
+        <p>Content paragraph 11</p>
+        <p>Content paragraph 12</p>
+        <p>Content paragraph 13</p>
+        <p>Content paragraph 14</p>
+        <p>Content paragraph 15</p>
+    </main>
+
+    <footer>
+        <p>Fixed Footer</p>
+    </footer>
+</body>
+</html>
