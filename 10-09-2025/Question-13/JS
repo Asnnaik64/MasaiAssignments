@@ -1,0 +1,31 @@
+const colorInput = document.getElementById('color-input');
+const textInput = document.getElementById('text-input');
+const changeBgBtn = document.getElementById('change-bg-btn');
+const updateTextBtn = document.getElementById('update-text-btn');
+const targetDiv = document.getElementById('target-div');
+
+function isValidColor(strColor) {
+  const s = new Option().style;
+  s.color = strColor;
+  return s.color !== '';
+}
+
+changeBgBtn.addEventListener('click', () => {
+  const colorName = colorInput.value.trim();
+
+  if (!colorName || !isValidColor(colorName)) {
+    alert('Invalid color name!');
+    return;
+  }
+  targetDiv.style.backgroundColor = colorName;
+});
+
+updateTextBtn.addEventListener('click', () => {
+  const newText = textInput.value.trim();
+
+  if (!newText) {
+    alert('Please enter some text!');
+    return;
+  }
+  targetDiv.textContent = newText;
+});
