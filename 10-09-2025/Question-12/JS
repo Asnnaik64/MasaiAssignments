@@ -1,0 +1,19 @@
+const ul = document.querySelector('ul#item-list');
+const button = document.getElementById('add-item-btn');
+
+button.addEventListener('click', () => {
+  const newLi = document.createElement('li');
+  
+  const count = ul.children.length + 1;
+  newLi.textContent = "New Item";
+
+  if (count % 2 === 1) {
+    newLi.style.fontWeight = 'bold';
+    newLi.style.color = 'blue';
+  } else {
+    newLi.style.fontStyle = 'italic';
+    newLi.style.color = 'red';
+  }
+
+  ul.appendChild(newLi);
+});
