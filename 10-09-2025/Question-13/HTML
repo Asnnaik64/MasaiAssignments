@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive DOM Manipulation</title>
+</head>
+<body>
+
+  <label for="color-input">Enter Color Name:</label>
+  <input type="text" id="color-input" placeholder="e.g. red, blue, #00ff00" />
+
+  <br/><br/>
+
+  <label for="text-input">Enter Text Content:</label>
+  <input type="text" id="text-input" placeholder="Type new text here" />
+
+  <br/><br/>
+
+  <button id="change-bg-btn">Change Background</button>
+  <button id="update-text-btn">Update Text</button>
+
+  <br/><br/>
+
+  <div id="target-div" style="padding: 20px; border: 1px solid #000;">
+    This is the initial content of the div.
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
